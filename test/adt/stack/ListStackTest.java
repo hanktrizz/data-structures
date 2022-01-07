@@ -64,7 +64,7 @@ class ListStackTest {
 
         assertEquals(3, stack.size());
     }
-    
+
     @Test
     void isEmpty_test() {
         assertEquals(true, stack.isEmpty());
