@@ -3,7 +3,7 @@ package adt.stack;
 public class Stack<T> implements IStack<T> {
 
     private final int capacity;
-    private final T[] stack;
+    private T[] stack;
     private int top = -1;
 
     @SuppressWarnings("unchecked")
@@ -49,5 +49,11 @@ public class Stack<T> implements IStack<T> {
     @Override
     public boolean isEmpty() {
         return this.size() == 0;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void clear() {
+        stack = (T[]) new Object[this.capacity];
     }
 }

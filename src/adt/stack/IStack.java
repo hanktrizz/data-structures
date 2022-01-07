@@ -12,4 +12,6 @@ public interface IStack<T> {
     boolean isFull();
 
     boolean isEmpty();
+
+    void clear();
 }
