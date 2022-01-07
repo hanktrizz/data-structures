@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ListStackTest {
 
-    Stack<Integer> stack = new Stack<>(10);
+    IStack<Integer> stack = new ListStack<>();
 
     @BeforeEach
     void reset() {
@@ -64,15 +64,7 @@ class ListStackTest {
 
         assertEquals(3, stack.size());
     }
-
-    @Test
-    void isFull_test() {
-        for (int i = 0; i < 10; ++i) {
-            stack.push(i);
-        }
-        assertEquals(true, stack.isFull());
-    }
-
+    
     @Test
     void isEmpty_test() {
         assertEquals(true, stack.isEmpty());
