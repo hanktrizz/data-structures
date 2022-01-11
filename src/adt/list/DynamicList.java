@@ -53,7 +53,14 @@ public class DynamicList<T> implements IList<T> {
 
     @Override
     public boolean contains(T item) {
-        return false;
+        boolean contains = false;
+        for (int i = 0; i < size; i++) {
+            if (array[i].equals(item)) {
+                contains = true;
+                break;
+            }
+        }
+        return contains;
     }
 
     @Override
@@ -73,6 +80,13 @@ public class DynamicList<T> implements IList<T> {
 
     @Override
     public T remove(int index) {
-        return null;
+        if (index < 0 || index > capacity - 1) throw new ArrayIndexOutOfBoundsException();
+
+        T toRemove = array[index];
+        for (int i = index; i < size; i++) {
+            array[i] = array[i + 1];
+        }
+        size--;
+        return toRemove;
     }
 }
