@@ -99,6 +99,8 @@ public class LinkedList<T> implements IList<T> {
 
         int idx = 0;
         Node toReturn = head;
+
+        if (index == 0) return head.data;
         while (toReturn.next != null && idx++ <= index) {
             toReturn = toReturn.next;
             if (idx == index) return (T) toReturn.data;
@@ -110,18 +112,28 @@ public class LinkedList<T> implements IList<T> {
     public T remove(int index) {
         if (index < 0) throw new IndexOutOfBoundsException();
 
-        Node toRemove = head;
-        int idx = 0;
+        Node current = head;
         if (index == 0) {
-            head = head.next;
-        } else {
-            while (toRemove.next != null && idx++ <= index) {
-                toRemove = toRemove.next;
-                if (idx == index) break;
-            }
+            head = current.next;
         }
-        return (T) toRemove.data;
+
+        for (int i = 0; i < index - 1 && current != null; ++i) {
+            current = current.next;
+        }
+
+        if (current == null || current.next == null) {
+            return null;
+        }
+
+        Node nextOfDeleted = current.next.next;
+        Node toDelete = current.next;
+
+        current.next = nextOfDeleted;
+
+
+        return (T) toDelete.data;
     }
+
 }
 
 class Node<T> {

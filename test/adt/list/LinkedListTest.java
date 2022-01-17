@@ -24,7 +24,9 @@ class LinkedListTest {
 
     @Test
     void addToFront() {
-        list.add(99);
+        list.addToFront(99);
+
+        assertEquals(99, list.get(0));
     }
 
     @Test
@@ -49,5 +51,16 @@ class LinkedListTest {
 
     @Test
     void remove() {
+        list.add(1);
+        list.add(2);
+        list.add(18);
+
+        assertEquals(3, list.size());
+
+        int val = list.remove(1);
+
+        assertEquals(2, list.size());
+        assertEquals(2, val);
+
     }
 }
