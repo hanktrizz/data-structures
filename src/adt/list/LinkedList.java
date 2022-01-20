@@ -144,3 +144,4 @@ class Node<T> {
         this.data = data;
     }
 }
+
